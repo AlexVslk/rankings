@@ -1,0 +1,37 @@
+{
+  "name": "sveltekit-starter",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "vite dev --open",
+    "build": "vite build",
+    "package": "svelte-kit package",
+    "preview": "vite preview",
+    "lint": "prettier --check --plugin-search-dir=. .",
+    "format": "prettier --write --plugin-search-dir=. .",
+    "setup": "node ./contentful/setup.js"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-netlify": "^1.0.0-next.88",
+    "@sveltejs/adapter-static": "^2.0.2",
+    "contentful-import": "^8.5.31",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.28.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-svelte3": "^4.0.0",
+    "prettier": "^2.8.4",
+    "prettier-plugin-svelte": "^2.8.1",
+    "sass": "^1.59.3",
+    "svelte-lightbox": "^1.1.1",
+    "svelte-preprocess": "^5.0.3",
+    "vite": "^4.1.1"
+  },
+  "type": "module",
+  "dependencies": {
+    "@contentful/rich-text-html-renderer": "^16.0.2",
+    "@sveltejs/adapter-auto": "^2.0.0",
+    "@sveltejs/kit": "^1.7.1",
+    "destyle.css": "^4.0.0",
+    "svelte": "^3.55.1",
+    "svelte-routing": "^1.6.0"
+  }
+}
