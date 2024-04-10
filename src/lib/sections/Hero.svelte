@@ -5,6 +5,9 @@
 
   let hero
 
+
+  console.log(data)
+
   function scrollDown() {
     const height = hero.getBoundingClientRect().height
 
@@ -26,21 +29,17 @@
   <Container>
     <div class="hero__wrapper">
       <div class="hero__leftside-inner">
-        <h1 class="h1">{data.titleHero}</h1>
+        <h1 class="h2">{data.titleHero}</h1>
         <div class="hero__arrow-animate">
           <div class="arrow__points">
-            <span class="arrow__point arrow__point-1">
-              <span class="arrow__point-text">Qualitative research</span>
-              <span class="arrow__point-num">01</span>
+            {#each data.pointsCollection.items as point, idx}
+            <span class={`arrow__point arrow__point-${idx+1}`}>
+              <span class="arrow__point-text">{point.title}</span>
+              <span class="arrow__point-num">0{idx+1}</span>
             </span>
-            <span class="arrow__point arrow__point-2">
-              <span class="arrow__point-text">Market research</span>
-              <span class="arrow__point-num">02</span>
-            </span>
-            <span class="arrow__point arrow__point-3">
-              <span class="arrow__point-text">Brand strategy & design</span>
-              <span class="arrow__point-num">03</span>
-            </span>
+            {/each}
+          
+           
           </div>
 
           <div class="hero__image-white" />

@@ -6,8 +6,12 @@
 </script>
 
 <svelte:head>
-  <title>{data.pageTitle}</title>
+  <title>{data.seo.title ? data.seo.title : data.pageTitle}</title>
+
   {#if data.seo}
+ 
+     <title>{data.seo.title ? data.seo.title : data.pageTitle}</title>
+
     {#if data.seo.description}
       <meta name="description" content={data.seo.description} />
     {/if}

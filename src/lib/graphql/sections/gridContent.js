@@ -45,6 +45,12 @@ export const gridContentQuery = `... on SectionGridContent {
         title
         text
       }
+      ... on BlockRichTextItem{
+        title
+        richText {
+          json
+        }   
+      }
     }
   }
 }

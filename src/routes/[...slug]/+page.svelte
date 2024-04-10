@@ -2,12 +2,16 @@
   import * as Sections from '$lib/sections'
   import '$lib/css/style.css'
   export let data
+  console.log("1", data)
   $: sections = data.sectionsCollection.items
 </script>
 
 <svelte:head>
-  <title>{data.name}</title>
+
+<title>{data.seo?.title ? data.seo?.title : data.name}</title>
+
   {#if data.seo}
+  
     {#if data.seo.description}
       <meta name="description" content={data.seo.description} />
     {/if}

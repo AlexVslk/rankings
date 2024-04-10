@@ -64,6 +64,20 @@
       display: flex;
     }
 
+    @media (max-width: 468px) {
+      &__image {
+       width: 100%;
+      }
+    }
+
+    @media (max-width: 992px) and (min-width:469px){
+      &__image {
+       object-fit: contain;
+      }
+    }
+
+
+
     @media (max-width: 992px) {
       &__wrapper {
         display: flex;
@@ -77,9 +91,7 @@
         }
       }
 
-      &__image {
-        width: 100%;
-      }
+    
     }
 
     &__image-wrapper {

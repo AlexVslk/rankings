@@ -4,6 +4,30 @@
 
   let activeQuestions = []
 
+
+
+  function renderRichText(nodes) {
+  let output = "";
+
+  if (nodes) {
+    nodes.forEach(node => {
+      if (node.nodeType === "text") {
+        output += node.value;
+      } else if (node.nodeType === "hyperlink") {
+        output += `<a href="${node.data.uri}" style="color:#0077ff;text-decoration: underline;">${renderRichText(node.content)}</a>`;
+      } else if (node.nodeType === "paragraph") {
+        output += `<p>${renderRichText(node.content)}</p>`;
+      } else if (node.nodeType === "unordered-list") {
+        output += `<ul style="list-style-type: disc;">${renderRichText(node.content)}</ul>`;
+      } else if (node.nodeType === "list-item") {
+        output += `<li style="margin:10px 0; padding:5px;">${renderRichText(node.content)}</li>`;
+      }
+    });
+  }
+
+  return output;
+}
+
   function toggleActive(index) {
     if (activeQuestions.includes(index)) {
       activeQuestions = activeQuestions.filter((item) => item !== index)
@@ -73,7 +97,7 @@
     <Container>
       <div class="seotext__wrapper">
         <div class="grid-content__title-wrapper">
-          <h2 class="h2">{data.title}</h2>
+          <h2 class="h1">{data.title}</h2>
           {#if data.subtitle !== null}
             <p class="grid-content__subtitle">{data.subtitle}</p>
           {:else if typeof data.subtitle === 'undefined'}
@@ -97,9 +121,10 @@
                   <span class="seotext__bar seotext__bar--null" />
                 {/if}
               </div>
-              <p class="seotext__text">
-                {item.text}
-              </p>
+              <div class="seotext__richtext">
+                {@html renderRichText(item.richText.json.content)}
+              </div>
+             
             </div>
           {/each}
         </div>
@@ -448,6 +473,7 @@
     }
   }
   .seotext {
+
     @media (min-width: 993px) {
       & {
         padding-top: 75px;
@@ -478,7 +504,19 @@
       flex-direction: column;
       position: relative;
       gap: 32px;
+
+
+
+     
     }
+
+
+&__richtext{
+  
+ .seotext__link{
+  background-color: red;
+ }
+}
 
     @media (min-width: 768px) {
       &__item {
@@ -933,6 +971,8 @@
       mix-blend-mode: color-dodge;
       transform: rotate(90deg);
     }
+
+   
 
     &__answer.active {
       padding-top: 15px;

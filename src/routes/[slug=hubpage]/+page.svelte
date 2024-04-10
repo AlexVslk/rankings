@@ -3,6 +3,7 @@
   import '$lib/css/style.css'
   import { page } from '$app/stores'
   export let data
+  console.log("2", data)
   $: activeTags = []
   $: sections = [
     ...data.pageData.sectionsCollection.items,
@@ -34,7 +35,11 @@
 
 <svelte:head>
   <title>{data.pageData.pageName}</title>
+
   {#if data.pageData.seo}
+
+   
+
     {#if data.pageData.seo.description}
       <meta name="description" content={data.pageData.seo.description} />
     {/if}
