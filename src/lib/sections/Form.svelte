@@ -65,7 +65,7 @@
       <div class="contact-form__wrapper contact-form__wrapper--contact">
         <div class="contact-form__inner">
           <div class="contact-form__title-wrapper">
-            <h1 class="h1 contact-form__title">Contact <span class="highlight">us</span></h1>
+            <h3 class="h1 contact-form__title">Contact <span class="highlight">us</span></h3>
           </div>
         </div>
         <div class="contact-form__inner contact-form__inner--contact">
@@ -108,9 +108,9 @@
       </div>
       <div class="contact-form__wrapper contact-form__wrapper--arrow">
         <div class="contact-form__inscription">
-          <h2 class="h2 contact-form__title contact-form__title--start">
+          <h3 class="h2 contact-form__title contact-form__title--start">
             Start a <br /> conversation
-          </h2>
+          </h3>
           <div class="contact-form__arrow">
             <img src="../arrow-static.svg" alt="arrow" class="contact-form__arrow-img" />
           </div>
@@ -196,7 +196,7 @@
       <div class="contact-form__wrapper">
         <div class="contact-form__inner">
           <div class="contact-form__title-wrapper">
-            <h1 class="h1 contact-form__title">Contact <span class="highlight">us</span></h1>
+            <h3 class="h1 contact-form__title">Contact <span class="highlight">us</span></h3>
             <a href="mailto:{data.workingEmail}" class="contact-form__email">{data.workingEmail}</a>
           </div>
           <nav class="contact-form__nav">

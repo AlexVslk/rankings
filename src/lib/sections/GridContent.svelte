@@ -97,7 +97,7 @@
     <Container>
       <div class="seotext__wrapper">
         <div class="grid-content__title-wrapper">
-          <h2 class="h1">{data.title}</h2>
+          <h1 class="h2">{data.title}</h1>
           {#if data.subtitle !== null}
             <p class="grid-content__subtitle">{data.subtitle}</p>
           {:else if typeof data.subtitle === 'undefined'}

@@ -29,7 +29,7 @@
   <Container>
     <div class="hero__wrapper">
       <div class="hero__leftside-inner">
-        <h1 class="h2">{data.titleHero}</h1>
+        <h2 class="h1">{data.titleHero}</h2>
         <div class="hero__arrow-animate">
           <div class="arrow__points">
             {#each data.pointsCollection.items as point, idx}

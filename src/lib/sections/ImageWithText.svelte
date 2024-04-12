@@ -100,7 +100,12 @@
 
       @media (min-width: 421px) {
         & {
-          height: 270px;
+          height: 340px;
+
+
+          img{
+            width: 60%;
+          }
         }
       }
     }
@@ -122,12 +127,14 @@
     @media (min-width: 993px) {
       &__inner {
         width: 50%;
+        height: max-content;
       }
     }
 
     @media (max-width: 992px) {
       &__inner {
         flex-direction: column;
+
       }
     }
 
@@ -150,7 +157,7 @@
       display: flex;
       flex-direction: column;
       gap: 35px;
-      justify-content: space-between;
+      
     }
 
     @media (min-width: 993px) {
