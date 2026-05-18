@@ -4,37 +4,37 @@
   export let data
   console.log("1", data)
   $: sections = data.sectionsCollection.items
+  $: seo = data?.seo ?? null
 </script>
 
 <svelte:head>
+  <title>{seo?.title ? seo.title : data.pageTitle}</title>
 
-<title>{data.seo?.title ? data.seo?.title : data.name}</title>
+  {#if seo}
+ 
+     <title>{seo?.title ? seo.title : data.pageTitle}</title>
 
-  {#if data.seo}
-  
-    {#if data.seo.description}
-      <meta name="description" content={data.seo.description} />
+    {#if seo.description}
+      <meta name="description" content={seo.description} />
+      <meta property="og:description" content={seo.description} />
     {/if}
-    {#if data.seo.description}
-      <meta property="og:image:url" content={data.seo.image.url} />
+
+    {#if seo?.image}
+      <meta property="og:image:url" content={seo.image.url} />
+      <meta property="og:image:width" content={seo.image.width} />
+      <meta property="og:image:height" content={seo.image.height} />
     {/if}
-    {#if data.seo.description}
-      <meta property="og:image:width" content={data.seo.image.width} />
+    
+    {#if seo.title}
+      <meta property="og:title" content={seo.title} />
     {/if}
-    {#if data.seo.description}
-      <meta property="og:image:height" content={data.seo.image.height} />
+    
+    {#if seo.ogype}
+      <meta property="og:type" content={seo.ogype} />
     {/if}
-    {#if data.seo.description}
-      <meta property="og:title" content={data.seo.title} />
-    {/if}
-    {#if data.seo.description}
-      <meta property="og:description" content={data.seo.description} />
-    {/if}
-    {#if data.seo.description}
-      <meta property="og:type" content={data.seo.ogype} />
-    {/if}
-    {#if data.seo.description}
-      <meta name="keywords" content={data.seo.keywords} />
+
+    {#if seo.keywords}
+      <meta name="keywords" content={seo.keywords} />
     {/if}
   {/if}
 </svelte:head>
