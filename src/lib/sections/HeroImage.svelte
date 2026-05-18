@@ -38,7 +38,10 @@
           <h1 class="h1">{data.title}</h1>
           <p class="hero-image__text">{data.text}</p>
           {#if data.linkData}
-            <a href={data.linkData.link} class="hero-image__link">{data.linkData.title}</a>
+            <a href={data.linkData.link} class="hero-image__link">
+              <span class="hero-image__link-text">{data.linkData.title}</span>
+              <img class="hero-image__link-icon" src="../Group 109.svg" alt={'arrow-right'}/>
+            </a>
           {/if}
           <div class="hero-image__categories">
             {#each data.tagListCollection.items as tag}
@@ -295,6 +298,7 @@
     &__text {
       display: flex;
       font-size: 18px;
+      line-height: 130%;
       color: #97a2b6;
     }
 
@@ -311,21 +315,21 @@
     }
 
     &__link {
-      position: relative;
-      color: #97a2b6;
-      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
       width: max-content;
 
-      &::after {
-        position: absolute;
-        content: '';
-        right: -30px;
+      &-text {
+        font-size: 14px;
+        color: #97a2b6;
+      }
+
+      &-icon {
+        display: inline-block;
         width: 18px;
         height: 15px;
-        object-fit: cover;
-        background-size: cover;
         opacity: 0.3;
-        background-image: url('../Group 109.svg');
       }
     }
 

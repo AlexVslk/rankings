@@ -47,7 +47,7 @@
     <div class="textContent__wrapper">
       <div class="textContent__title-wrapper {data.textAlign}">
         <h2 class="h2">{data.title}</h2>
-        <p class="textContent__text">{data.text}</p>
+        <p class="textContent__text">{@html data.text}</p>
       </div>
       {#if data.image}
         <Lightbox
@@ -125,6 +125,7 @@
     }
 
     &__text {
+      line-height: 130%;
       color: #07124a;
     }
 
