@@ -7,8 +7,10 @@ export const footerQuery = `... on SectionFooter {
   footerRights
   socialLinksCollection(limit: 10) {
     items {
-      socialIcon{
+      socialIcon {
         url
+        title
+        description
       }
       link
       noFollow      

@@ -6,7 +6,7 @@
   let hero
 
 
-  console.log(data)
+  // console.log(data)
 
   function scrollDown() {
     const height = hero.getBoundingClientRect().height

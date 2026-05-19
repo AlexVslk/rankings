@@ -580,6 +580,7 @@ header {
 }
 
 .hero__arrow {
+  position: relative;
   width: 100%;
 }
 

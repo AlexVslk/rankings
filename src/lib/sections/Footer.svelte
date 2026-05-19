@@ -1,19 +1,8 @@
 <script>
   import Container from '$lib/components/Container.svelte'
+  import { beforeUpdate } from 'svelte'
+
   export let data = {}
-
-  import { beforeUpdate, onMount } from 'svelte'
-
-  let screenWidth
-
-  onMount(() => {
-    screenWidth = window.innerWidth
-    let pathname = window.location.pathname
-    page = pathname.substring(pathname.lastIndexOf('/') + 1)
-    window.addEventListener('resize', () => {
-      screenWidth = window.innerWidth
-    })
-  })
 
   let page = ''
 
@@ -21,142 +10,113 @@
     let pathname = window.location.pathname
     page = pathname.substring(pathname.lastIndexOf('/') + 1)
   })
+
 </script>
 
-{#if page == 'contact-us'}
-  <footer class="footer footer--contact">
+  <footer class={`footer ${page == 'contact-us' ? 'footer--contact' : ''}`}>
     <Container>
-      <div class="footer__wrapper footer__wrapper--contact">
+      <div class={`footer__wrapper ${page == 'contact-us' ? 'footer__wrapper--contact' : ''}`}>
         <div class="footer__inner">
           <p class="footer__rights-text">{data.footerRights}</p>
-          {#if screenWidth && screenWidth > 992}
+
             <div class="footer__links-wrapper">
               {#each data.socialLinksCollection.items as item}
-                <a href="#" class="footer__link">
-                  <img src={item.socialIcon.url} alt="" class="footer__link-icon" />
+                <a href={item.link} class="footer__link">
+                  <img src={item.socialIcon.url} alt={item.socialIcon.title} class="footer__link-icon" />
                 </a>
               {/each}
             </div>
-          {/if}
         </div>
 
-        {#if screenWidth && screenWidth > 992}
           <div class="footer__terms-wrapper">
             {#each data.footerTermsPolicyCollection.items as item}
               <a href={item.link} class="footer__terms">{item.title}</a>
             {/each}
           </div>
-        {/if}
       </div>
     </Container>
   </footer>
-{/if}
-
-{#if page != 'contact-us'}
-  <footer class="footer">
-    <Container>
-      <div class="footer__wrapper">
-        <div class="footer__inner">
-          <p class="footer__rights-text">{data.footerRights}</p>
-          {#if screenWidth && screenWidth > 992}
-            <div class="footer__links-wrapper">
-              {#each data.socialLinksCollection.items as item}
-                <a href="#" class="footer__link">
-                  <img src={item.socialIcon.url} alt="" class="footer__link-icon" />
-                </a>
-              {/each}
-            </div>
-          {/if}
-        </div>
-
-        {#if screenWidth && screenWidth > 992}
-          <div class="footer__terms-wrapper">
-            {#each data.footerTermsPolicyCollection.items as item}
-              <a href={item.link} class="footer__terms">{item.title}</a>
-            {/each}
-          </div>
-        {/if}
-      </div>
-    </Container>
-  </footer>
-{/if}
 
 <style lang="scss">
-  footer.footer--contact {
-    background-color: #46506f;
+  @import '../css/mixins';
+  @import '../css/functions';
 
-    @media (max-width: 992px) {
-      & {
+  .footer {
+    color: #07124a;
+
+    &--contact {
+      background-color: #46506f;
+
+      @include media-down('lg') {
         padding-top: 30px;
       }
     }
-  }
 
-  .footer__wrapper--contact {
-    filter: brightness(4000%);
-  }
-  footer.footer * {
-    color: #07124a;
-
-    .footer__inner {
+    &__inner {
       display: flex;
-      gap: 100px;
+      flex-wrap: wrap-reverse;
+      column-gap: fluid-size(20, 100);
+      row-gap: 20px;
 
-      @media (max-width: 768px) {
-        & {
-          justify-content: center;
-        }
+      @include media-down('md') {
+        gap: 20px;
+        justify-content: center;
       }
     }
 
-    .footer__wrapper {
+    &__wrapper {
       position: relative;
       width: 100%;
       padding-top: 20px;
       padding-bottom: 20px;
       display: flex;
-
-      @media (min-width: 993px) {
-        & {
-          justify-content: space-between;
-        }
+      gap: 20px;
+      
+      @include media-up('lg') {
+        justify-content: space-between;
       }
 
-      @media (max-width: 992px) {
-        & {
-          justify-content: center;
-        }
+      @include media-down('lg') {
+        justify-content: center;
+      }
+
+      &--contact {
+        filter: brightness(4000%);
       }
     }
 
-    .footer__links-wrapper {
+    &__links-wrapper {
       display: flex;
       gap: 25px;
+
+      @include media-down('lg') {
+        display: none;
+      }
     }
 
-    .footer__terms-wrapper {
+    &__terms-wrapper {
       display: flex;
-      gap: 50px;
+      gap: fluid-size(20, 50);
+
+      @include media-down('lg') {
+        display: none;
+      }
     }
 
-    .footer__rights-text {
+    &__terms {
+      text-wrap: nowrap;
+    }
+
+    &__rights-text {
       text-align: center;
 
-      @media (max-width: 768px) {
+      @include media-down('md') {
         font-size: 12px;
         width: 75%;
         line-height: 20px;
       }
     }
 
-    @media (min-width: 993px) and (max-width: 1100px) {
-      .footer__inner {
-        gap: 20px;
-      }
-
-      .footer__terms-wrapper {
-        gap: 20px;
-      }
-    }
+    
   }
 </style>
